@@ -10,7 +10,7 @@ Create MVVM client app
 * [Gradle](https://github.com/gradle/gradle) - Build tool.
 
 
+<p align="middle">
 <img src="https://i.imgur.com/vyeDz25.png" width=30% height=30%>
 <img src="https://i.imgur.com/hOqaLns.png" width=30% height=30%>
-
-
+</p>
