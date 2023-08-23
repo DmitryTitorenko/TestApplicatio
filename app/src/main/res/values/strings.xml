@@ -11,4 +11,8 @@
     <string name="vera_secure">Vera Secure</string>
     <string name="vera_edge">Vera Edge</string>
 
+    <string name="delete_device">Delete device?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
 </resources>

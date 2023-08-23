@@ -1,6 +1,7 @@
 package com.example.testapplication.db
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -12,6 +13,9 @@ interface DeviceDao {
 
     @Insert
     suspend fun insertAll(vararg devices: Device)
+
+    @Delete
+    suspend fun deleteDevice(device: Device)
 
     @Query("DELETE FROM device")
     suspend fun deleteAll()

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testapplication.App
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentDevicesBinding
+import com.example.testapplication.db.Device
 import com.example.testapplication.network.Result
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -65,7 +66,9 @@ class DeviceFragment : Fragment() {
                 R.id.action_deviceFragment_to_deviceDescriptionFragment, bundle
             )
 
-        }, { }, { })
+        }, { deleteDevice ->
+            showDialog(deleteDevice)
+        })
         binding.rvDevices.adapter = deviceAdapter
     }
 
@@ -89,5 +92,12 @@ class DeviceFragment : Fragment() {
 
     private fun initLoad() {
         viewModel.loadDevices()
+    }
+
+    private fun showDialog(device: Device) {
+        val dialogFragment = DeleteDeviceDialogFragment {
+            viewModel.deleteDevice(device)
+        }
+        dialogFragment.show(childFragmentManager, "dialog")
     }
 }

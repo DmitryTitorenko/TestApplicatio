@@ -22,4 +22,8 @@ class Repository @Inject constructor(
     suspend fun insertAll(vararg devices: Device) = withContext(ioDispatcher) {
         dao.insertAll(*devices)
     }
+
+    suspend fun deleteDevice(device: Device) = withContext(ioDispatcher) {
+        dao.deleteDevice(device)
+    }
 }

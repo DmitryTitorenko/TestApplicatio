@@ -15,8 +15,7 @@ import com.example.testapplication.utils.setIcon
 class DeviceAdapter(
     initList: List<Device>,
     val deviceClick: (Device) -> Unit,
-    val deviceDelete: (Device) -> Unit,
-    val deviceEdit: (Device) -> Unit
+    val longClick: (Device) -> Unit
 ) : RecyclerView.Adapter<DeviceAdapter.ViewHolder>() {
 
     private val deviceList = mutableListOf<Device>()
@@ -60,24 +59,14 @@ class DeviceAdapter(
                     deviceClick(deviceList[absoluteAdapterPosition])
                 }
             }
+            view.setOnLongClickListener {
+                if (absoluteAdapterPosition != RecyclerView.NO_POSITION) {
+                    longClick(deviceList[absoluteAdapterPosition])
+                }
+                true
+            }
         }
     }
-
-//    private fun setIcon(imageView: ImageView, platform: String) {
-//        when (platform) {
-//            "Sercomm G450" -> {
-//                imageView.setImageResource(R.drawable.vera_plus_big)
-//            }
-//
-//            "Sercomm G550" -> {
-//                imageView.setImageResource(R.drawable.vera_secure_big)
-//            }
-//
-//            "MiCasaVerde VeraLite", "Sercomm NA900", "Sercomm NA301", "Sercomm NA930", "" -> {
-//                imageView.setImageResource(R.drawable.vera_edge_big)
-//            }
-//        }
-//    }
 
     private fun setDeviceTitle(context: Context, position: Int) =
         "${context.getString(R.string.home_number)} " + " ${deviceList[position].deviceIndex}"

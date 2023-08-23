@@ -3,8 +3,8 @@ package com.example.testapplication.devicelist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testapplication.db.Device
-import com.example.testapplication.network.Result
 import com.example.testapplication.network.Repository
+import com.example.testapplication.network.Result
 import com.example.testapplication.response.DeviceResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -45,6 +45,12 @@ class DeviceViewModel @Inject constructor(
             is Result.Failure -> _deviceStateFlow.emit(Result.Failure(response.apiError))
             is Result.Exception -> _deviceStateFlow.emit(Result.Exception(response.exception))
             is Result.Loading -> _deviceStateFlow.emit(Result.Loading)
+        }
+    }
+
+    fun deleteDevice(device: Device) {
+        viewModelScope.launch {
+            repository.deleteDevice(device)
         }
     }
 
