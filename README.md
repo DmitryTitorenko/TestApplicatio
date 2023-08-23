@@ -9,7 +9,8 @@ Create MVVM client app
 * [Navigation](https://developer.android.com/guide/navigation) - Single-Activity Architecture.
 * [Gradle](https://github.com/gradle/gradle) - Build tool.
 
-<img src="https://i.imgur.com/vyeDz25.png" width=50% height=50%>
-<img src="https://i.imgur.com/hOqaLns.png" width=50% height=50%>
+
+<img src="https://i.imgur.com/vyeDz25.png" width=30% height=30%>
+<img src="https://i.imgur.com/hOqaLns.png" width=30% height=30%>
 
 
