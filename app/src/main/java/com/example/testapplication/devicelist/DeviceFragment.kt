@@ -66,6 +66,15 @@ class DeviceFragment : Fragment() {
 
         }, { deleteDevice ->
             showDialog(deleteDevice)
+        }, { deviceEditClick ->
+            val bundle = Bundle().apply {
+                putParcelable("device", deviceEditClick)
+                putBoolean("isEdit", true)
+            }
+
+            findNavController().navigate(
+                R.id.action_deviceFragment_to_deviceDescriptionFragment, bundle
+            )
         })
         binding.rvDevices.adapter = deviceAdapter
     }

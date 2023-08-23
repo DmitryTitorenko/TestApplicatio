@@ -14,7 +14,8 @@ import com.example.testapplication.db.Device
 class DeviceAdapter(
     initList: List<Device>,
     val deviceClick: (Device) -> Unit,
-    val longClick: (Device) -> Unit
+    val longClick: (Device) -> Unit,
+    val deviceEdit: (Device) -> Unit
 ) : RecyclerView.Adapter<DeviceAdapter.ViewHolder>() {
 
     private val deviceList = mutableListOf<Device>()
@@ -31,7 +32,7 @@ class DeviceAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             setIcon(ivDevice, deviceList[position].platform)
-            tvDeviceTitle.text = setDeviceTitle(view.context, position)
+            tvDeviceTitle.text = setDeviceTitle(position)
             tvDeviceSN.text = setDeviceSN(view.context, position)
         }
     }
@@ -51,6 +52,7 @@ class DeviceAdapter(
         val ivDevice: ImageView = view.findViewById(R.id.ivDevice)
         val tvDeviceTitle: TextView = view.findViewById(R.id.tvDeviceTitle)
         val tvDeviceSN: TextView = view.findViewById(R.id.tvDeviceSN)
+        private val ivEditDevice: ImageView = view.findViewById(R.id.ivEditDevice)
 
         init {
             view.setOnClickListener {
@@ -64,11 +66,16 @@ class DeviceAdapter(
                 }
                 true
             }
+            ivEditDevice.setOnClickListener {
+                if (absoluteAdapterPosition != RecyclerView.NO_POSITION) {
+                    deviceEdit(deviceList[absoluteAdapterPosition])
+                }
+            }
         }
     }
 
-    private fun setDeviceTitle(context: Context, position: Int) =
-        "${context.getString(R.string.home_number)} " + " ${deviceList[position].deviceIndex}"
+    private fun setDeviceTitle(position: Int) =
+        " ${deviceList[position].title}"
 
     private fun setDeviceSN(context: Context, position: Int) =
         "${context.getString(R.string.sn)}:" + " ${deviceList[position].pkDevice}"

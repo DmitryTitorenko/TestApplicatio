@@ -27,6 +27,10 @@ class Repository @Inject constructor(
         dao.deleteDevice(device)
     }
 
+    suspend fun updateDevice(device: Device) = withContext(ioDispatcher) {
+        dao.updateDevice(device)
+    }
+
     suspend fun deleteAll() = withContext(ioDispatcher) {
         dao.deleteAll()
     }

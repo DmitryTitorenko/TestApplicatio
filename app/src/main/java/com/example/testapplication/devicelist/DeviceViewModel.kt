@@ -38,7 +38,7 @@ class DeviceViewModel @Inject constructor(
                 val loadDevices = response.data.Devices.sortedBy {
                     it.pkDevice
                 }.mapIndexed { index, device ->
-                    transformDeviceResultToDevice(index + 1, device)
+                    transformDeviceResultToDevice("Home Number ${index + 1}", device)
                 }
 
                 repository.insertAll(*loadDevices.toTypedArray())
@@ -56,13 +56,19 @@ class DeviceViewModel @Inject constructor(
         }
     }
 
+    fun updateDevice(device: Device) {
+        viewModelScope.launch {
+            repository.updateDevice(device)
+        }
+    }
+
     fun resetDevices() {
         viewModelScope.launch {
             repository.deleteAll()
         }
     }
 
-    private fun transformDeviceResultToDevice(index: Int, deviceRes: DeviceResult): Device {
+    private fun transformDeviceResultToDevice(title: String, deviceRes: DeviceResult): Device {
         return Device(
             firmware = deviceRes.firmware,
             internalIP = deviceRes.internalIP,
@@ -76,7 +82,7 @@ class DeviceViewModel @Inject constructor(
             serverAccount = deviceRes.serverAccount,
             serverDevice = deviceRes.serverDevice,
             serverEvent = deviceRes.serverEvent,
-            deviceIndex = index
+            title = title
         )
     }
 }

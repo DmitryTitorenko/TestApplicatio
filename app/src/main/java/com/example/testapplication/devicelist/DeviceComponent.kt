@@ -1,6 +1,7 @@
 package com.example.testapplication.devicelist
 
 import com.example.testapplication.MainActivity
+import com.example.testapplication.devicedescription.DeviceDescriptionFragment
 import com.example.testapplication.di.DeviceActivityScope
 import dagger.Subcomponent
 
@@ -14,4 +15,5 @@ interface DeviceComponent {
 
     fun inject(activity: MainActivity)
     fun inject(fragment: DeviceFragment)
+    fun inject(fragment: DeviceDescriptionFragment)
 }

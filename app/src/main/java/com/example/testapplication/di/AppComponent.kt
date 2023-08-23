@@ -16,5 +16,5 @@ interface AppComponent {
         fun create(@BindsInstance context: Context): AppComponent
     }
 
-    fun deviceListComponent(): DeviceComponent.Factory
+    fun deviceComponent(): DeviceComponent.Factory
 }

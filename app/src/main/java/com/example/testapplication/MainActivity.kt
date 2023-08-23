@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: DeviceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        deviceComponent = (applicationContext as App).appComponent.deviceListComponent().create()
+        deviceComponent = (applicationContext as App).appComponent.deviceComponent().create()
         deviceComponent.inject(this)
 
         super.onCreate(savedInstanceState)

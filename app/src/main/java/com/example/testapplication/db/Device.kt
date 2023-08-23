@@ -45,6 +45,6 @@ data class Device(
     @ColumnInfo("server_event")
     val serverEvent: String,
 
-    @ColumnInfo("device_index")
-    val deviceIndex: Int
+    @ColumnInfo("title")
+    val title: String
 ) : Parcelable
