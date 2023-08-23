@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">TestApplication</string>
+    <string name="user_name">Lineage OS</string>
     <string name="home_number">Home Number</string>
     <string name="sn">SN</string>
-    <string name="user_name">Lineage OS</string>
+    <string name="mac_address">MAC Address</string>
+    <string name="firmware">Firmware</string>
+    <string name="model">Model</string>
+
+    <string name="vera_plus">Vera Plus</string>
+    <string name="vera_secure">Vera Secure</string>
+    <string name="vera_edge">Vera Edge</string>
+
 </resources>
