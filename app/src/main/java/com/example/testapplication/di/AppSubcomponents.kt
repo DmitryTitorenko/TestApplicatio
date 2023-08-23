@@ -1,9 +1,9 @@
 package com.example.testapplication.di
 
-import com.example.testapplication.devicelist.DeviceListComponent
+import com.example.testapplication.devicelist.DeviceComponent
 import dagger.Module
 
 @Module(
-    subcomponents = [DeviceListComponent::class]
+    subcomponents = [DeviceComponent::class]
 )
 class AppSubcomponents

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.R
 import com.example.testapplication.db.Device
-import com.example.testapplication.utils.setIcon
 
 class DeviceAdapter(
     initList: List<Device>,
@@ -73,4 +72,20 @@ class DeviceAdapter(
 
     private fun setDeviceSN(context: Context, position: Int) =
         "${context.getString(R.string.sn)}:" + " ${deviceList[position].pkDevice}"
+}
+
+fun setIcon(imageView: ImageView, platform: String) {
+    when (platform) {
+        "Sercomm G450" -> {
+            imageView.setImageResource(R.drawable.vera_plus_big)
+        }
+
+        "Sercomm G550" -> {
+            imageView.setImageResource(R.drawable.vera_secure_big)
+        }
+
+        "MiCasaVerde VeraLite", "Sercomm NA900", "Sercomm NA301", "Sercomm NA930", "" -> {
+            imageView.setImageResource(R.drawable.vera_edge_big)
+        }
+    }
 }

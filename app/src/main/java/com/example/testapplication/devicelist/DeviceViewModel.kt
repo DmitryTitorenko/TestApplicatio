@@ -3,6 +3,7 @@ package com.example.testapplication.devicelist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testapplication.db.Device
+import com.example.testapplication.di.DeviceActivityScope
 import com.example.testapplication.network.Repository
 import com.example.testapplication.network.Result
 import com.example.testapplication.response.DeviceResult
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@DeviceActivityScope
 class DeviceViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
@@ -54,6 +56,12 @@ class DeviceViewModel @Inject constructor(
         }
     }
 
+    fun resetDevices() {
+        viewModelScope.launch {
+            repository.deleteAll()
+        }
+    }
+
     private fun transformDeviceResultToDevice(index: Int, deviceRes: DeviceResult): Device {
         return Device(
             firmware = deviceRes.firmware,
@@ -72,6 +80,3 @@ class DeviceViewModel @Inject constructor(
         )
     }
 }
-
-
-

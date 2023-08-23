@@ -1,31 +1,19 @@
 package com.example.testapplication.devicedescription
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.testapplication.App
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentDeviceDescriptionBinding
 import com.example.testapplication.db.Device
-import com.example.testapplication.devicelist.DeviceViewModel
+import com.example.testapplication.devicelist.setIcon
 import com.example.testapplication.utils.parcelable
-import com.example.testapplication.utils.setIcon
-import javax.inject.Inject
 
 class DeviceDescriptionFragment : Fragment() {
     private var _binding: FragmentDeviceDescriptionBinding? = null
     private val binding get() = _binding!!
-
-    @Inject
-    lateinit var viewModel: DeviceViewModel
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (activity?.application as App).appComponent.inject(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

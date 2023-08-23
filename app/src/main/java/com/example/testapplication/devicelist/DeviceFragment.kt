@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.testapplication.App
+import com.example.testapplication.MainActivity
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentDevicesBinding
 import com.example.testapplication.db.Device
@@ -27,12 +27,11 @@ class DeviceFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: DeviceViewModel
-
     private lateinit var deviceAdapter: DeviceAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.application as App).appComponent.deviceListComponent().create().inject(this)
+        (activity as MainActivity).deviceComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -46,7 +45,6 @@ class DeviceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         initListener()
-        initLoad()
     }
 
     private fun initAdapter() {
@@ -88,10 +86,6 @@ class DeviceFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun initLoad() {
-        viewModel.loadDevices()
     }
 
     private fun showDialog(device: Device) {
